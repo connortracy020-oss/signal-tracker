@@ -878,7 +878,7 @@ async function syncNow() {
   }
 }
 async function connectSync(url, key) {
-  url = (url || '').trim().replace(/\/+$/, ''); key = (key || '').trim();
+  url = (url || '').replace(/\s+/g, '').replace(/\/+$/, ''); key = (key || '').replace(/\s+/g, '');   // copy-paste on a phone can add spaces
   if (!/^https?:\/\//.test(url) || !key) { toast('Enter the worker URL and key'); return false; }
   try {
     const r = await fetch(url + '/ping', { headers: { authorization: 'Bearer ' + key } });
