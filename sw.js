@@ -1,6 +1,6 @@
 /* Offline support: network first (so updates show up as soon as you're online), cache as the fallback.
    Requests to your sync worker are cross-origin and never touched here. */
-const CACHE = 'signal-v4';
+const CACHE = 'signal-v5';
 const SHELL = ['./', 'index.html', 'styles.css', 'core.js', 'app.js', 'fonts.css', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png',
   'fonts/Geist-normal-400-latin.woff2', 'fonts/Geist-normal-500-latin.woff2', 'fonts/Geist-normal-600-latin.woff2',
   'fonts/GeistMono-normal-400-latin.woff2', 'fonts/GeistMono-normal-500-latin.woff2',
