@@ -1,0 +1,8 @@
+name = "signal-sync"
+main = "index.mjs"
+compatibility_date = "2025-06-01"
+
+# Filled in by tools/deploy-sync.ps1 (or by hand: npx wrangler kv namespace create SIGNAL)
+[[kv_namespaces]]
+binding = "SIGNAL"
+id = "838f53ec0dc5439cbe0e8fbcdbd464d6"

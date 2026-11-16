@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Signal</title>
+<meta name="description" content="Track signal vs noise. Log what you do, see your ratio.">
+<meta name="theme-color" content="#F4EFE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1A1816" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Signal">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link href="fonts.css" rel="stylesheet"><!-- bundled, so the app makes no requests beyond its own server and your sync worker -->
+<link href="styles.css" rel="stylesheet">
+</head>
+<body data-mood="idle">
+<div class="ambient" aria-hidden="true"></div>
+<header class="top" id="top">
+  <div class="wrap top-inner">
+    <div class="brand">
+      <span class="brand-mark"><svg width="18" height="18" viewBox="0 0 32 32" fill="none" stroke="#FAF7F1" stroke-width="3.2" stroke-linecap="round"><path d="M5.5 26v-1M11 26v-5M16.5 26v-10M22 26v-15"/><path d="M27.5 26V6" opacity=".35"/></svg></span>
+      Signal
+    </div>
+    <div class="top-right">
+      <button class="icon-btn" id="syncbtn" data-act="syncbtn" data-sync="off" title="Sync" aria-label="Sync status">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 19H9a7 7 0 1 1 6.7-9h1.8a4.5 4.5 0 1 1 0 9z"/></svg>
+        <span class="sync-dot"></span>
+      </button>
+      <button class="icon-btn" id="theme" title="Light / dark" aria-label="Toggle theme">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="view"></main>
+
+<div class="dock">
+  <div class="dock-in">
+    <div class="nowbar glass" id="nowbar" hidden></div>
+    <nav class="tabbar glass" id="tabs" role="tablist">
+      <span class="tab-ind" id="tab-ind"></span>
+      <button role="tab" data-tab="today" aria-selected="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 3v3"/></svg>Today</button>
+      <button role="tab" data-tab="history" aria-selected="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>History</button>
+      <button role="tab" data-tab="settings" aria-selected="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>Settings</button>
+    </nav>
+  </div>
+</div>
+
+<div class="scrim" id="scrim" hidden><div class="modal" id="modal" role="dialog" aria-modal="true"></div></div>
+<div class="ov" id="ov" hidden></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="grain" aria-hidden="true"></div>
+<noscript><p style="padding:24px">Signal needs JavaScript.</p></noscript>
+<script src="core.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
