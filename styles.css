@@ -425,3 +425,9 @@ footer { padding: 24px 0 8px; color: var(--ink-3); font-size: 12.5px; text-align
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
 @keyframes breathe { 50% { opacity: .35; } }
+
+/* iOS draws the clock and battery in white over the app (status-bar-style: black-translucent),
+   so in light mode the strip behind them is ink-dark; in dark mode it simply matches the page. */
+.statusbar { position: fixed; top: 0; left: 0; right: 0; height: env(safe-area-inset-top); background: var(--paper); z-index: 96; pointer-events: none; }
+:root[data-theme="light"] .statusbar { background: #1C1A17; }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .statusbar { background: #1C1A17; } }
